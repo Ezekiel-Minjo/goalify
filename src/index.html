@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Goal Planner</title>
+    <link rel="stylesheet" href="css/styles.css"
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1>💰 Smart Goal Planner</h1>
+        <p>Track and achieve your financial goals</p>
+      </header>
+
+      <div class="overview-cards" id="overviewCards">
+        <div class="overview-card">
+          <h3>Total Goals</h3>
+          <div class="value" id="totalGoals">-</div>
+        </div>
+        <div class="overview-card">
+          <h3>Total Saved</h3>
+          <div class="value" id="totalSaved">$Ksh-</div>
+        </div>
+        <div class="overview-card">
+          <h3>Completed Goals</h3>
+          <div class="value" id="completedGoals">-</div>
+        </div>
+        <div class="overview-card">
+          <h3>Active Goals</h3>
+          <div class="value" id="activeGoals">-</div>
+        </div>
+      </div>
+
+      <div class="main-content">
+        <section class="goals-section">
+          <div class="section-header">
+            <h2 class="section-title">Your Goals</h2>
+            <button class="btn btn-primary" onclick="openAddGoalModal()">
+              + Add Goal
+            </button>
+          </div>
+
+          <div id="goalsContainer" class="loading">Loading your goals...</div>
+        </section>
+
+        <aside class="sidebar">
+          <div class="action-panel">
+            <h3 class="section-title" style="margin-bottom: 20px">
+              Quick Deposit
+            </h3>
+            <form onsubmit="makeDeposit(event)">
+              <div class="form-group">
+                <label for="depositGoal">Select Goal</label>
+                <select id="depositGoal" class="form-control" required>
+                  <option value="">Choose a goal...</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="depositAmount">Amount (Ksh.)</label>
+                <input
+                  type="number"
+                  id="depositAmount"
+                  class="form-control"
+                  min="0.01"
+                  step="0.01"
+                  placeholder="0.00"
+                  required
+                />
+              </div>
+              <button type="submit" class="btn btn-primary" style="width: 100%">
+                Make Deposit
+              </button>
+            </form>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <!-- Add/Edit Goal Modal -->
+    <div id="goalModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="modalTitle">Add New Goal</h2>
+          <button class="close" onclick="closeModal()">&times;</button>
+        </div>
+        <form onsubmit="saveGoal(event)">
+          <div class="form-group">
+            <label for="goalName">Goal Name</label>
+            <input type="text" id="goalName" class="form-control" required />
+          </div>
+          <div class="form-group">
+            <label for="targetAmount">Target Amount (Ksh.)</label>
+            <input
+              type="number"
+              id="targetAmount"
+              class="form-control"
+              min="0.01"
+              step="0.01"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="goalCategory">Category</label>
+            <select id="goalCategory" class="form-control" required>
+              <option value="">Select category...</option>
+              <option value="Travel">Travel</option>
+              <option value="Emergency">Emergency</option>
+              <option value="Electronics">Electronics</option>
+              <option value="Real Estate">Real Estate</option>
+              <option value="Vehicle">Vehicle</option>
+              <option value="Education">Education</option>
+              <option value="Shopping">Shopping</option>
+              <option value="Retirement">Retirement</option>
+              <option value="Home">Home</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="goalDeadline">Deadline</label>
+            <input
+              type="date"
+              id="goalDeadline"
+              class="form-control"
+              required
+            />
+          </div>
+          <div style="display: flex; gap: 10px; justify-content: flex-end">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              onclick="closeModal()"
+            >
+              Cancel
+            </button>
+            <button type="submit" class="btn btn-primary">Save Goal</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="js/app.js"></script>
+  </body>
+</html>
