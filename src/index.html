@@ -11,6 +11,12 @@
       <header class="header">
         <h1>💰 Smart Goal Planner</h1>
         <p>Track and achieve your financial goals</p>
+        <!-- Navigation for hash routing -->
+        <nav class="nav">
+          <a href="#/goals" class="nav-link">Goals</a>
+          <a href="#/deposit" class="nav-link">Quick Deposit</a>
+          <a href="#/add-goal" class="nav-link">Add Goal</a>
+        </nav>
       </header>
 
       <div class="overview-cards" id="overviewCards">
@@ -20,7 +26,7 @@
         </div>
         <div class="overview-card">
           <h3>Total Saved</h3>
-          <div class="value" id="totalSaved">$Ksh-</div>
+          <div class="value" id="totalSaved">Ksh.-</div>
         </div>
         <div class="overview-card">
           <h3>Completed Goals</h3>
@@ -33,17 +39,16 @@
       </div>
 
       <div class="main-content">
+        <!-- Goals Section -->
         <section class="goals-section">
           <div class="section-header">
             <h2 class="section-title">Your Goals</h2>
-            <button class="btn btn-primary" onclick="openAddGoalModal()">
-              + Add Goal
-            </button>
+            <a href="#/add-goal" class="btn btn-primary">+ Add Goal</a>
           </div>
-
           <div id="goalsContainer" class="loading">Loading your goals...</div>
         </section>
 
+        <!-- Quick Deposit Panel -->
         <aside class="sidebar">
           <div class="action-panel">
             <h3 class="section-title" style="margin-bottom: 20px">

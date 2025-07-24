@@ -107,6 +107,7 @@ document.addEventListener("DOMContentLoaded", function () {
   renderGoals();
   updateOverview();
   updateDepositGoalOptions();
+  router(); // run routing on initial load
 });
 
 // Save to localStorage
@@ -291,3 +292,22 @@ window.onclick = function (event) {
   const modal = document.getElementById("goalModal");
   if (event.target === modal) closeModal();
 };
+
+// HASH ROUTER
+function router() {
+  const hash = window.location.hash || "#/goals";
+
+  if (hash === "#/goals") {
+    document.querySelector(".goals-section").style.display = "block";
+    document.querySelector(".action-panel").style.display = "none";
+    closeModal();
+  } else if (hash === "#/deposit") {
+    document.querySelector(".goals-section").style.display = "none";
+    document.querySelector(".action-panel").style.display = "block";
+    closeModal();
+  } else if (hash === "#/add-goal") {
+    openAddGoalModal();
+  }
+}
+
+window.addEventListener("hashchange", router);
